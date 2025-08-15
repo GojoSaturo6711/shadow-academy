@@ -1,42 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Shadow Academy Design System - Dark Cyberpunk Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Shadow Academy Dark Theme */
+    --background: 215 28% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 215 25% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 215 25% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 215 28% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215 25% 12%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 215 25% 10%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 195 100% 60%;
+    --accent-foreground: 215 28% 5%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 215 25% 15%;
+    --input: 215 25% 12%;
+    --ring: 195 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Shadow Academy Custom Colors */
+    --shadow-primary: 215 28% 5%;
+    --shadow-secondary: 215 25% 8%;
+    --shadow-tertiary: 215 25% 12%;
+    --electric-blue: 195 100% 50%;
+    --electric-glow: 195 100% 60%;
+    --neon-cyan: 180 100% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%) 0%, hsl(180 100% 50%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(215 28% 5%) 0%, hsl(215 25% 8%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(215 25% 8%) 0%, hsl(215 25% 12%) 100%);
+    
+    /* Shadows & Glows */
+    --shadow-glow: 0 0 20px hsl(195 100% 50% / 0.3);
+    --shadow-glow-hover: 0 0 30px hsl(195 100% 50% / 0.5);
+    --shadow-card: 0 8px 32px hsl(215 28% 5% / 0.5);
+    --shadow-card-hover: 0 12px 48px hsl(215 28% 5% / 0.7);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +122,117 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Poppins',_sans-serif];
+    background: var(--gradient-dark);
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button with Electric Glow */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-glow-hover);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  /* Course Card Styles */
+  .course-card {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:scale-105;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .course-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--electric-blue) / 0.5);
+  }
+
+  /* Navigation Styles */
+  .nav-link {
+    @apply text-foreground hover:text-primary transition-all duration-300 relative;
+  }
+  
+  .nav-link:hover {
+    text-shadow: 0 0 8px hsl(var(--electric-blue) / 0.6);
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background: var(--gradient-primary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Modal Styles */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4;
+    backdrop-filter: blur(8px);
+  }
+  
+  .modal-content {
+    @apply bg-card border border-border rounded-xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Form Styles */
+  .form-input {
+    @apply w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-muted-foreground transition-all duration-300;
+  }
+  
+  .form-input:focus {
+    @apply outline-none ring-2 ring-primary border-primary;
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Glow Effect */
+  .glow-effect {
+    filter: drop-shadow(0 0 8px hsl(var(--electric-blue) / 0.6));
+  }
+  
+  /* Smooth Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
