@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,20 +39,36 @@ const Header = () => {
             </h1>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('hero')} className="nav-link">
+          <div className="flex items-center space-x-4">
+            <Button 
+              onClick={() => scrollToSection('hero')}
+              variant="ghost"
+              className="bg-transparent text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 glow-effect"
+            >
               Home
-            </button>
-            <button onClick={() => scrollToSection('courses')} className="nav-link">
+            </Button>
+            <Button 
+              onClick={() => scrollToSection('courses')}
+              variant="ghost"
+              className="bg-transparent text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 glow-effect"
+            >
               Courses
-            </button>
-            <button onClick={() => scrollToSection('about')} className="nav-link">
+            </Button>
+            <Button 
+              onClick={() => scrollToSection('about')}
+              variant="ghost"
+              className="bg-transparent text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 glow-effect"
+            >
               About
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="nav-link">
+            </Button>
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              variant="ghost"
+              className="bg-transparent text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 glow-effect"
+            >
               Contact
-            </button>
-          </nav>
+            </Button>
+          </div>
 
           {/* Mobile menu button */}
           <button className="md:hidden text-foreground">

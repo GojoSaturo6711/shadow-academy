@@ -40,42 +40,10 @@ const HeroSection = () => {
         
         <Button 
           onClick={scrollToCourses}
-          className="btn-hero text-lg px-8 py-4 fade-in mb-8"
+          className="btn-hero text-lg px-8 py-4 fade-in"
         >
           Start Learning
         </Button>
-
-        {/* Navigation Buttons */}
-        <div className="flex flex-wrap gap-4 justify-center fade-in">
-          <Button 
-            onClick={() => scrollToSection('hero')}
-            variant="outline"
-            className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            Home
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('courses')}
-            variant="outline"
-            className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            Courses
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('about')}
-            variant="outline"
-            className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            About
-          </Button>
-          <Button 
-            onClick={() => scrollToSection('contact')}
-            variant="outline"
-            className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-          >
-            Contact
-          </Button>
-        </div>
       </div>
 
       {/* Animated particles effect */}
